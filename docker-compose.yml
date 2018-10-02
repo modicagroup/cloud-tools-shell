@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  cloud-tools-shell:
+    image: cloud-tools-shell 
+    hostname: cloud-tools-shell
+    volumes:
+      - ./:/workdir
+      - ./shell/gcloud-config:/root/.config/gcloud
+      - ./shell/kube-config:/root/.kube
+      - ./shell/firebase-config:/root/.config/configstore
+      - ./.bash_history:/root/.bash_history
+      - ./.bash_aliases:/root/.bash_aliases
+    stdin_open: true
+    tty: true

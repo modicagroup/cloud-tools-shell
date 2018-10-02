@@ -1,0 +1,11 @@
+#!/bin/sh
+
+BASEDIR=$(dirname "$0") # get location of this script
+
+# have to create these if they don't exist otherwise docker creates directories
+if [ ! -f "$BASEDIR/.bash_history" ]; then
+    touch "$BASEDIR/.bash_history"
+fi
+
+set -x
+exec docker-compose -f "$BASEDIR/docker-compose.yml" run --rm cloud-tools-shell "$@"
